@@ -113,3 +113,31 @@ do
 done
 totalSalary=$(( $totalEmpHr * $EMP_RATE_PER_HR  ))
 echo "total wages of working hours or days " $totalSalary
+
+
+# UC-7
+
+totalEmpHr=0;
+totalWorkingDays=0;
+totalWorkHours=0;
+function getWorkingHours()
+{
+    case $1 in
+       $IS_PART_TIME)
+             workingHrs=4;;
+       $IS_FULL_TIME)
+             workingHrs=8;;
+       *)
+             workingHrs=0;;
+     esac
+   echo $workingHrs;
+}
+while [[ $totalWorkHours -lt $MAX_HRS_IN_MONTH &&
+          $totalWorkingDays -lt $NUM_WORKING_DAYS ]]
+do
+    ((totalWorkingDays++))
+    workHours="$( getWorkingHours $((RANDOM%3)))"
+   totalWorkHours=$(( $totalWorkHours + $workHours ))
+done
+totalSalary=$(($totalWorkHours*$EMP_RATE_PER_HR));
+echo "total salary using function is "$totalSalary
