@@ -9,12 +9,13 @@ else
 	echo "Employee is absent" ;
 fi
 #UC-2
+
 if [ $isPresent -eq $randomCheck ]
 then
      empRatePerday=20;
      empHrs=8;
      salary=$(($empRatePerday*$empHrs))
-     echo "Daily employee wage is".$salary
+     echo "Daily employee wage".$salary
 else
      salary=0;
 fi
